@@ -1,0 +1,11 @@
+<h4>確認メールが届けませんでしたか？</h3>
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="form-group has-feedback">
+    <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" ,placeholder: "メールアドレス", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+  </div>
+  <div class="actions">
+    <button type="submit" class="btn btn-primary btn-block btn-flat">確認メールを送信</button>
+  </div>
+<% end %>

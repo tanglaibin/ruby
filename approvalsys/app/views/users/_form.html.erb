@@ -1,0 +1,47 @@
+<%= form_with(model: user, local: true) do |form| %>
+<!-- Main content -->
+<section class="content">
+  <!--------------------------
+     | Your Page Content Here |
+    -------------------------->
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-primary">
+        <br/>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <% if user.errors.any? %>
+          <p>
+            <div id="error_explanation" class="alert alert-danger alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <% user.errors.full_messages.each do |message| %>
+              <ul>
+                <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </p>
+          <% end %>
+                      <div class="form-group">
+                              <%= form.label :name %><br />
+                <%= form.text_field :name, id: :user_name, class: "form-control" %>
+                          </div>
+                      <div class="form-group">
+                              <%= form.label :email %><br />
+                <%= form.text_field :email, id: :user_email, class: "form-control" %>
+                          </div>
+                      <div class="form-group">
+                              <%= form.label :role_id %><br />
+                <%= form.number_field :role_id, id: :user_role_id, class: "form-control" %>
+                          </div>
+                    <div class="box-footer actions">
+            <%= link_to '戻る', users_path, class: 'btn btn-primary' %>
+            <%= form.submit '更新', class: "btn btn-primary pull-right" %>
+          </div>
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+  </div>
+</section>
+<% end %>

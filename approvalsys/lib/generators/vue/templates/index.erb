@@ -1,0 +1,83 @@
+<template>
+  <row>
+    <va-box theme="box-info" title="<%= plural_name.humanize %>" :isBorder="true" widgetType>
+      <va-pagination slot="pagination" :pageIndex="pagination.pageIndex" :totalCount="pagination.totalCount" @click="paging"></va-pagination>
+      <div slot="content" class="table-responsive">
+        <table class="table table-bordered table-hover dataTable">
+          <thead>
+            <tr>
+              <%- editable_attributes.map do |attribute| -%>
+              <th><%= attribute.human_name %></th>
+              <%- end -%>
+            </tr>
+          </thead>
+          <tbody>
+            <router-link tag="tr" :to="{name: '<%=router_edit_name%>', params: {id: <%=singular_name%>.id}}" v-for="(<%=singular_name%>, index) in <%=plural_name%>" :key="index">
+              <%- editable_attributes.map do |attribute| -%>
+              <td>{{<%=singular_name%>.<%= attribute.name %>}}</td>
+              <%- end -%>
+            </router-link>
+          </tbody>
+        </table>
+      </div>
+      <div class="box-footer clearfix" slot="footer">
+        <router-link :to="{name: '<%=router_new_name%>'}" class="btn btn-sm btn-info btn-flat pull-left"><i class="fa fa-plus"></i> Add <%= human_name %></router-link>
+        <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All <%= plural_name.humanize %></a>
+      </div>
+    </va-box>
+  </row>
+</template>
+
+<script>
+    export default {
+        name: "<%= vue_component_kebab_name%>-index",
+        //common components are imported at lib/global.js
+        components: {
+        },
+        methods: {
+            paging(val) {
+              this.pagination.pageIndex = val;
+            },
+            getData(page_no = 0){
+              this.axios.get("/<%=plural_name%>.json", {
+                  requestParam: {
+                  },
+                  handleRes: response => {
+                    //list result
+                    this.<%=plural_name%> = response.data;
+                    this.pagination.totalCount = this.<%=plural_name%>.length;
+                  },
+                  handleError: error => {
+                    console.log(error);
+                    this.alert.error(this, error);
+                  }
+              });
+            }
+        },
+        computed: { },
+        watch: { },
+        //https://jp.vuejs.org/v2/api/#オプション-ライフサイクルフック
+        created () { },
+        mounted () { 
+          this.getData();
+        },
+        data() {
+            return {
+                <%=plural_name%>: [
+                    {
+                    <%- editable_attributes.map do |attribute| -%>
+                        <%= attribute.name %>: "<%=attribute.default %>",
+                    <%- end -%>
+                    }
+                ],
+                pagination :{
+                  pageIndex: 0,
+                  totalCount: 0
+                }
+            };
+        }
+    };
+</script>
+
+<style scoped>
+</style>

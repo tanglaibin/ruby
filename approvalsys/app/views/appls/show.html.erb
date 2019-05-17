@@ -1,0 +1,58 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>Appl表示</h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+    <li class="active">Here</li>
+  </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+  <!--------------------------
+     | Your Page Content Here |
+    -------------------------->
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="box">
+        <div class="box-body table-responsive no-padding">
+          <p>
+            <div class="alert alert-success alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <%= notice %>
+            </div>
+          </p>
+          <%= notice %>
+          <table class="table">
+            <tbody>
+                              <tr>
+                  <td><strong>User:</strong></td>
+                  <td><%= @appl.user_id %></td>
+                </tr>
+                              <tr>
+                  <td><strong>Title:</strong></td>
+                  <td><%= @appl.title %></td>
+                </tr>
+                              <tr>
+                  <td><strong>State:</strong></td>
+                  <td><%= @appl.state %></td>
+                </tr>
+                              <tr>
+                  <td><strong>Description:</strong></td>
+                  <td><%= @appl.description %></td>
+                </tr>
+                          </tbody>
+          </table>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer clearfix">
+          <div class="no-margin pull-right">
+            <%= link_to '戻る', appls_path, class: 'btn btn-primary' %>
+            <%= link_to '変更', edit_appl_path(@appl), class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+      <!-- /.box -->
+    </div>
+  </div>
+</section>
+<!-- /.content -->

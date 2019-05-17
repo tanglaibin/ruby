@@ -1,0 +1,15 @@
+defaults: &defaults
+  role:
+    system_admin: "SYSTEM_ADMIN"
+    user_admin: "USER_ADMIN"
+    route_admin: "ROUTE_ADMIN"
+    normal_user: "NORMAL_USER"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

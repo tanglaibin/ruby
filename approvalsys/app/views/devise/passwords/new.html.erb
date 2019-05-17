@@ -1,0 +1,11 @@
+<h4>パスワードを忘れですか？</h3>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="form-group has-feedback">
+    <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" ,placeholder: "メールアドレス"%>
+    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+  </div>
+  <div class="actions">
+    <button type="submit" class="btn btn-primary btn-block btn-flat">パスワード再設定の確認メールを送信</button>
+  </div>
+<% end %>

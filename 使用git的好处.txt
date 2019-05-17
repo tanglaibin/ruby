@@ -1,0 +1,31 @@
+使用 Git 有什?好?
+
+如果以前从未用?版本控制系?，?在可能不完全明白版本控制的好?。那我?个例子?明一下?。假如?不小心做了某个操作，例如把重要的 app/controllers/ 目??除了：
+
+$ ls app/controllers/
+application_controller.rb  concerns/
+$ rm -rf app/controllers/
+$ ls app/controllers/
+ls: app/controllers/: No such file or directory
+?里，我?用 Unix 中的 ls 命令列出 app/controllers/ 目?里的内容，然后用 rm 命令?除?个目?（表 1.1）。如《Learn Enough Command Line to Be Dangerous》所述，-rf 旗?的意思是“?制??”，无需明?征求同意就???除所有文件、目?和子目?等。
+
+??状?，看看?生了什?：
+
+$ git status
+On branch master
+Changed but not updated:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+      deleted:    app/controllers/application_controller.rb
+
+no changes added to commit (use "git add" and/or "git commit -a")
+可以看出，我??除了一个文件。但是?个改?只?生在工作区（working tree）中，?未提交到??。?意味着，我?可以使用 checkout 命令，并指定 -f 旗?，?制撤??次改?：
+
+$ git checkout -f
+$ git status
+# On branch master
+nothing to commit (working directory clean)
+$ ls app/controllers/
+application_controller.rb  concerns/
+?除的目?和文件又回来了，?下放心了！

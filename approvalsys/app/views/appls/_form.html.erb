@@ -1,0 +1,51 @@
+<%= form_with(model: appl, local: true) do |form| %>
+<!-- Main content -->
+<section class="content">
+  <!--------------------------
+     | Your Page Content Here |
+    -------------------------->
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-primary">
+        <br/>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <% if appl.errors.any? %>
+          <p>
+            <div id="error_explanation" class="alert alert-danger alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <% appl.errors.full_messages.each do |message| %>
+              <ul>
+                <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </p>
+          <% end %>
+                      <div class="form-group">
+                              <%= form.label :user_id %><br />
+                <%= form.text_field :user_id, id: :appl_user_id, class: "form-control" %>
+                          </div>
+                      <div class="form-group">
+                              <%= form.label :title %><br />
+                <%= form.text_field :title, id: :appl_title, class: "form-control" %>
+                          </div>
+                      <div class="form-group">
+                              <%= form.label :state %><br />
+                <%= form.number_field :state, id: :appl_state, class: "form-control" %>
+                          </div>
+                      <div class="form-group">
+                              <%= form.label :description %><br />
+                <%= form.text_area :description, id: :appl_description, class: "form-control" %>
+                          </div>
+                    <div class="box-footer actions">
+            <%= link_to '戻る', appls_path, class: 'btn btn-primary' %>
+            <%= form.submit '更新', class: "btn btn-primary pull-right" %>
+          </div>
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+  </div>
+</section>
+<% end %>

@@ -1,0 +1,26 @@
+<section class="content" style="padding-top:10%;">
+  <!--------------------------
+     | Your Page Content Here |
+    -------------------------->
+  <div class="error-page">
+    <div class="pull-left">
+      <img src="~admin-lte/dist/intra_logo.jpg" class="img-circle" alt="User Image">
+    </div>
+    <div class="error-content">
+      <div class="pull-right">
+        <%= link_to '戻る', url_for(:back), class: 'btn btn-primary' %>
+      </div>
+      <h3><i class="fa fa-warning text-yellow"></i> 404 Error Page</h3>
+      <p>
+        ページが見つかりません。
+      </p>
+      <p>
+        操作方法が不明の方は、事務局まで
+        <%= link_to "お問い合わせ", "https://www.tci-cn.co.jp/contact.html" %>
+        ください。
+      </p>
+    </div>
+    <!-- /.error-content -->
+  </div>
+</section>
+<!-- /.content -->

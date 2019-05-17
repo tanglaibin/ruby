@@ -1,0 +1,52 @@
+<template>
+  <va-box :title="title" theme="box-primary" :isBorder="true" widgetType>
+    <div slot="content">
+    <%- editable_attributes.map do |attribute| 
+        if attribute.name != "id"
+            case type = input_type(attribute.type)
+            when :textarea then -%>
+        <va-textarea-group title="<%= attribute.human_name %>" vaId="<%= attribute.name %>" :isDisabled="false" placeholder="Enter <%= attribute.human_name %>" :value="<%=singular_name%>.<%=attribute.name%>" @input=" value => updateValue(value, '<%=attribute.name%>')"></va-textarea-group>
+        <%- when :checkbox then -%>
+        <va-checkbox text="<%= attribute.human_name %>" :checkedValue="true" :value="<%=singular_name%>.<%=attribute.name%>"  @change=" value => updateValue(value, '<%=attribute.name%>')"></va-checkbox>
+        <%- else -%>
+        <va-input-group title="<%= attribute.human_name %>" vaId="<%= attribute.name %>" type="<%= type %>" placeholder="Enter <%= attribute.human_name %>" :value="<%=singular_name%>.<%=attribute.name%>" @input=" value => updateValue(value, '<%=attribute.name%>')">
+        </va-input-group>
+        <%- end 
+        end 
+    end -%>
+    </div>
+  </va-box>
+</template>
+<script>
+    export default {
+        name: "<%= vue_component_kebab_name%>-form",
+        props: {
+            <%=singular_name%>: {
+                type: Object
+            },
+            title: {
+                type: String,
+                default: ""
+            }
+        },
+        //common components are imported at lib/global.js
+        components: { },
+        methods: {
+            updateValue(newValue, itemKey) {
+                this.$emit('input', newValue, itemKey);
+            }
+        },
+        computed: { },
+        watch: { },
+        //https://jp.vuejs.org/v2/api/#オプション-ライフサイクルフック
+        created() { },
+        mounted() { },
+        data() {
+            return {
+            };
+        }
+    }
+</script>
+
+<style scoped>
+</style>

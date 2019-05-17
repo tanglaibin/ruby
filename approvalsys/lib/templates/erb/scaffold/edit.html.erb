@@ -1,0 +1,8 @@
+<section class="content-header">
+  <h1><%= singular_table_name.titleize %>変更</h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+    <li class="active">Here</li>
+  </ol>
+</section>
+<%%= render 'form', <%= singular_table_name %>: @<%= singular_table_name %> %>

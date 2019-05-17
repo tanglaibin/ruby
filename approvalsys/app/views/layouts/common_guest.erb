@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DemoApp</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body class="hold-transition login-page">
+    <div class="login-box">
+      <div class="login-logo">
+        <%= image_tag('/assets/logo.png', :class => "img-circle", :alt => "User Image") %>
+        <b>社内システム</b>
+      </div>
+      <!-- /.login-logo -->
+      <div class="login-box-body">
+        <% if notice.nil? || notice.empty? %>
+        <% else %>
+          <div class="alert alert-warning alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <%= notice %>
+          </div>
+        <% end %>
+        <% if alert.nil? || alert.empty? %>
+        <% else %>
+          <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <%= alert %>
+          </div>
+        <% end %>
+        <%= yield %>
+        <%= render "devise/shared/links" %>
+      </div>
+      <!-- /.login-box-body -->
+    </div>
+    <!-- /.login-box -->
+    <script>
+      $(function () {
+        $('input').iCheck({
+          checkboxClass: 'icheckbox_square-blue',
+          radioClass: 'iradio_square-blue',
+          increaseArea: '20%' /* optional */
+        });
+      });
+    </script>
+  </body>
+</html>

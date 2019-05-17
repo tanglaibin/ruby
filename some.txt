@@ -1,0 +1,319 @@
+了解です    
+
+
+tang.laibin@tci-cn.co.jp
+
+copy env_sample.txt .env
+
+
+$ git config --global user.name “tanglaibin”
+$ git config --global user.email “tang.laibin@tci-cn.co.jp”
+
+
+ssh-keygen -t rsa -C "tang.laibin@tci-cn.co.jp"
+
+AWS：
+ssh-keygen -t rsa -C "tang.laibin@tci-cn.co.jp" -f ~/.ssh/id_rsa -P ""
+
+cat ~/.ssh/id_rsa.pub
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDwyWYaoAQAIByI1w5vIfUhjdP8+YpzjzP1uOFly67ioE1tqF0kN0/BlvXIYeSivYpXoM09iIUgfRYUF1EqI31Tqww0qpeyhao41OUC9pl9ZrSfNuCCYtgXGh3a/JtxkpA5RFBZsMB5HdNe4qwXlqqDIrvro2OSyLNZRU5IIW8hIqLRe7P+b2+TsSVd4Gc0WKGjgCLqgNn1QQhw0c2tTaDQGS2rCH8WGFnetU3rsVL4gbbM3IpEkZiRa+3t/zujqzL9IcaTUl5pKmnIyZoyeX5ZoqS9ANXwEZtK+7SRQwnWAAVobm1+WU4z1g2AbLN1vHHRVyUv5biwgL2+71+x/tSd tang.laibin@tci-cn.co.jp													
+
+
+git remote add origin git@bitbucket.org:tanglaibin/hello_app.git
+git push -u origin master
+
+
+git clone -b poc http://redmine.tci-cn.co.jp/gitlab/intra/approvalsys.git
+git clone -b poc http://redmine.tci-cn.co.jp/gitlab/intra/approvalsys.git
+
+
+
+bundle install
+rails db:migrate
+rails db:seed
+rails s
+
+
+rake db:migrate
+
+
+gem install sqlite3 -v "=3.28.0" --platform=ruby -- --with-sqlite3-include=C:\sqlite-amalgamation-3280000 --with-sqlite3-lib=C:\Ruby24-x64\bin
+
+
+gem install rails -v 5.1.7							
+
+
+
+rails new lesson01
+rails _5.1.6_ new hello_app
+bundle install
+bundle update
+
+大量的 gem（代??，一个 gem 解决一个特定的??，例如分?和?像上?）；
+?建完一个新的 Rails ?用后，下一?是使用 Bundler 安装和引入??用所需的 gem。
+gem 'uglifier', '>= 1.3.0' 
+安装版本号大于或等于 1.3.0 的 uglifier
+
+
+gem 'coffee-rails', '~> 4.0.0'
+安装版本号大于或等于 4.0.0，但不大于 4.1 的 coffee-rails。
+
+rails server
+
+
+cd ~/environment/hello_app/
+rm -rf app/controllers/
+-rf 旗?的意思是“?制??”，无需明?征求同意就???除所有文件、目?和子目?等。
+
+ls app/controllers/
+
+
+Rails 采用了“模型-??-控制器”（?称 MVC）架?模式。
+
+把?用中的数据（例如用?信息）与?示数据的代?分?，?是?形用?界面（Graphical User Interface，?称 GUI）常用的架?方式。
+
+与 Rails ?用交互?，??器?出一个?求（request），Web 服?器收到?求之后将其?? Rails ?用的控制器，决定下一?做什?。某些情况下，控制器会立即?染??（view），生成 HTML，然后?送???器。在??网站中，更常?的是控制器与模型（model）交互。模型是一个 Ruby ?象，表示网站中的一个元素（例如一个用?），并且??与数据?通信。与模型交互后，控制器再?染??，把生成的 HTML 返回???器。
+
+ls app/controllers/*_controller.rb
+
+要告? Rails 使用?个?作，而不再?示默?的首?。?此，我?要修改 Rails 路由器（router）。路由器在控制器之前，决定??器???用的?求由?个?作?理。
+
+
+如何定?根路由
+root 'controller_name#action_name'
+root 'application#hello'
+
+使用倒置的感?号（如“!Hola, mundo!”中的第一个字符），?明 Rails 支持非 ASCII 字符。
+
+
+
+
+
+?行 git add -A 命令，把?目中的所有文件都放到??中：
+
+$ git add -A
+?个命令会把当前目?中的所有文件都放到??中，但是匹配特殊文件 .gitignore 中模式的文件除外。rails new 命令会自?生成一个?用于 Rails ?目的 .gitignore 文件，此外??可以添加其他模式。
+
+加入??的文件一?始位于?存区（staging area），?一区用于存放待提交的内容。?行 status 命令可以?看?存区中有?些文件：
+
+$ git status
+
+如果想? Git 保存?些改?，使用 commit 命令：
+$ git commit -m "Initialize repository"
+-m 旗?的意思是??次提交添加一个?明。如果没指定 -m 旗?，Git 会打?系?默?使用的??器，??在其中?入?明。
+
+如何把改?推送到?程??（使用 git push 命令）。
+可以使用 log 命令?看提交?史。
+$ git log
+
+如果??的提交?史很多，可能需要?入 q 退出。
+
+本地，推送代?到?端git??：
+git remote add origin git@bitbucket.org:tanglaibin/hello_app.git
+
+先告? Git，?想添加 Bitbucket 作??个??的源（origin），然后再把??推送到?个?端的源。（?管 -u 旗?的意思，如果好奇，可以搜索“git set upstream”。）当然了，?要把 <username> ?成?自己的用?名。例如，我?行的命令是：$ git remote add origin git@bitbucket.org:railstutorial/hello_app.git
+
+git push -u origin master
+
+
+GitHub 和 Bitbucket
+目前，托管 Git ??最受?迎的网站是 GitHub 和 Bitbucket。??个网站有很多相似之?：都能托管??，也可以?作，而且??和搜索??很方便。但二者之?有个重要的区?（?本?而言）：GitHub ??源?目提供无限量的免???，但私有??收?；而 Bitbucket 提供了无限量的私有??，?当?作者超?一定数量?才收?。所以，???个网站，取决于具体的需求。
+
+
+使用 cat 命令打印公?
+$ cat ~/.ssh/id_rsa.pub
+
+
+
+
+?行 rails new 命令（明?指定版本号）
+$ cd ~/environment
+$ rails _5.1.6_ new hello_app
+      create
+      create  README.md
+
+
+README.md 文件由rails new 命令自?生成
+
+
+Markdown 是一?人?可?的???言，易于??成 HTML
+
+
+
+
+
+
+分支
+Git 分支（branch）的功能很?大。分支是???的高效?制，在分支中所做的改?（或?是??性?的）不会影?父?文件。大多数情况下，父???是 master 分支。我?可以使用 checkout 命令，并指定 -b 旗?，?建一个新主?分支（topic branch）：
+
+$ git checkout -b modify-README
+Switched to a new branch 'modify-README'
+$ git branch
+  master
+* modify-README
+其中，第二个命令 git branch 的作用是列出所有本地分支。星号（*）表示当前所在的分支。注意，git checkout -b modify-README 命令先?建一个新分支，然后再切?到?个新分支??modify-README 分支前面的星号?明了?一点。
+
+git branch 的作用是列出所有本地分支。星号（*）表示当前所在的分支。注意，git checkout -b modify-README 命令先?建一个新分支，然后再切?到?个新分支??modify-README 分支前面的星号?明了?一点。
+
+
+本可以使用前面用?的 git add -A 命令，但是 git commit 命令提供了 -a 旗?，可以直接提交?有文件中的全部改?：$ git commit -a -m "Improve the README file"
+
+使用 -a 旗?一定要小心，千万??用了。如果上次提交之后?目中添加了新文件，??使用 git add -A，先告? Git 新增了文件。
+
+
+合并
+我?已?改完了，?在可以把?果合并（merge）到主分支了：
+
+$ git checkout master
+Switched to branch 'master'
+$ git merge modify-README
+
+合并之后，我?可以清理一下分支??如果主?分支不用了，可以使用 git branch -d 命令将其?除：
+$ git branch -d modify-README
+
+?可以使用 git branch -D 命令放弃主?分支中的改?：
+
+
+在大多数系?中都可以省略 origin master，直接?行 git push 命令：
+$ git push
+
+
+
+我?要在生??境安装 pg gem，?? Rails 才能与 PostgreSQL 通信：
+group :production do
+  gem 'pg', '0.20.0'
+end
+
+避免在生??境安装 sqlite3 gem，?是因? Heroku 不支持 SQLite 数据?。
+group :development, :test do
+  gem 'sqlite3', '1.3.13'
+  gem 'byebug',  '9.0.6', platform: :mri
+end
+
+不? Bundler 安装生??境的 gem
+$ bundle install --without production
+
+
+在云端 IDE 中安装 Heroku CLI 的命令
+$ source <(curl -sL https://cdn.learnenough.com/heroku_install)
+
+?看 Heroku CLI 的当前版本号
+$ heroku --version
+
+
+?? Heroku 命令行工具已?安装之后，使用 heroku 命令登?，然后添加 SSH 密?：
+
+heroku update
+$ heroku login  如果?不出窗口  heroku login -i
+ec2-user:~/environment/hello_app (master) $ heroku login -i
+heroku: Enter your login credentials
+Email: tlbljj@sina.com
+Password: ********
+Logged in as tlbljj@sina.com
+
+$ heroku keys:add
+ec2-user:~/environment/hello_app (master) $ heroku keys:add
+Found an SSH public key at /home/ec2-user/.ssh/id_rsa.pub
+? Would you like to upload it to Heroku? Yes
+Uploading /home/ec2-user/.ssh/id_rsa.pub SSH key... done
+
+最后，?行 heroku create 命令，在 Heroku 的服?器中?建一个位置，用于存放演示?用。
+
+heroku 命令会??的?用分配一个二?域名，立即生效。当然，?在?看不到内容，下面?始部署?。
+
+
+Heroku 部署第一?
+部署?用的第一?是，使用 Git 把主分支推送到 Heroku 中：
+git push heroku master
+
+已?完成部署了。?在可以通? heroku create 命令?出的地址
+ec2-user:~/environment/hello_app (master) $ heroku create
+Creating app... done, ? fast-dawn-14441
+https://fast-dawn-14441.herokuapp.com/ | https://git.heroku.com/fast-dawn-14441.git
+
+https://fast-dawn-14441.herokuapp.com/
+
+
+修改根路由，?示 goodbye ?作?染的?果。部署?，看看能不能省略 git push 命令中的 master，只使用 git push heroku。
+
+不能省略：?目里修改什?，要push到git后，再?布到heroku去部署。
+git commit -a -m "11"
+git push
+git push heroku
+
+
+?行 heroku help 命令，?看 Heroku 命令列表。找到?示?用日志的命令。
+
+
+
+
+
+
+
+
+$ cd ~/environment
+$ rails _5.1.6_ new toy_app
+$ cd toy_app/
+
+
+git commit -m "ddd"
+
+
+
+?看 Application 控制器文件的内容，找出 ApplicationController ?承自 ActionController::Base 的代?。
+
+
+
+class Micropost < ApplicationRecord
+  belongs_to :user
+  validates :content, length: { maximum: 140 },presence: true
+end
+
+
+class User < ApplicationRecord
+  has_many :microposts
+  validates FILL_IN, presence: true # 把 FILL_IN ?成正?的代?
+  validates FILL_IN, presence: true # 把 FILL_IN ?成正?的代?
+end
+
+
+
+
+
+gem 'sqlite3', '1.3.13'
+
+
+
+rake db:migrate
+
+
+
+
+rails generate scaffold user id：integer user_id：string password：string user_name：string mail_address：string
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

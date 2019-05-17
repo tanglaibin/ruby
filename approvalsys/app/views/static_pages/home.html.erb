@@ -1,0 +1,60 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  　  
+  <h1>
+    <% if current_user.nil? %>
+    <% else %>
+      マイページ
+      <small><%= current_user.name %>さん、こんにちは！</small>
+    <% end %>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+    <li class="active">Here</li>
+  </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+  <!--------------------------
+     | Your Page Content Here |
+    -------------------------->
+  <% if current_user.nil? %>
+    <!-- 未ログイン場合 -->
+    <div class="error-page">
+      <div class="pull-left">
+        <img src="~admin-lte/dist/intra_logo.jpg" class="img-circle" alt="User Image">
+      </div>
+      <div class="error-content">
+        <div class="pull-right">
+          <%= link_to 'ログイン', '/users/sign_in', class: 'btn btn-primary' %>
+        </div>
+        <h3><i class="fa fa-warning text-yellow"></i> 社員専用ページ</h3>
+        <p>
+          ここから先は、大宇宙ジャパンの社員専用ページとなります。
+          社員の方はユーザIDとパスワードを入力し、ログインしてください。
+        </p>
+        <p>
+          ※社員の方で認証用ユーザIDとパスワードが不明の方は、事務局まで
+          <%= link_to "お問い合わせ", "https://www.tci-cn.co.jp/contact.html" %>
+          ください。
+        </p>
+      </div>
+      <!-- /.error-content -->
+    </div>
+    <!-- /.error-page -->
+  <% else %>
+    <!-- 部長の場合 -->
+    <% if current_user.role_id == 2 %>
+      <p><%= link_to "部長管理画面", "/admin" %></p>
+    <% end %>
+    <!-- マネージャーの場合 -->
+    <% if current_user.role_id == 4 %>
+      <p><%= link_to "マネージャー管理画面", "/admin" %></p>
+    <% end %>
+    <!-- 一般社員の場合 -->
+    <% if current_user.role_id == 0 %>
+      <p><%= link_to "申請画面", "/admin" %></p>
+    <% end %>
+  <% end %>
+</section>
+<!-- /.content -->

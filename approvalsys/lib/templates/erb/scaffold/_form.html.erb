@@ -1,0 +1,50 @@
+<%%= form_with(model: <%= singular_table_name %>, local: true) do |form| %>
+<!-- Main content -->
+<section class="content">
+  <!--------------------------
+     | Your Page Content Here |
+    -------------------------->
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-primary">
+        <br/>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <%% if <%= singular_table_name %>.errors.any? %>
+          <p>
+            <div id="error_explanation" class="alert alert-danger alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <%% <%= singular_table_name %>.errors.full_messages.each do |message| %>
+              <ul>
+                <li><%%= message %></li>
+                <%% end %>
+              </ul>
+            </div>
+          </p>
+          <%% end %>
+          <% attributes.each do |attribute| -%>
+            <div class="form-group">
+              <% if attribute.password_digest? -%>
+                <%%= form.label :パスワード %><br />
+                <%%= form.password_field :password, id: :<%= field_id(:password) %>, class: "form-control"%>
+              </div>
+              <div class="form-group">
+                <%%= form.label :パスワード再入力 %><br />
+                <%%= form.password_field :password_confirmation, id: :<%= field_id(:password_confirmation) %>, class: "form-control" %>
+              <% else -%>
+                <%%= form.label :<%= attribute.column_name %> %><br />
+                <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, id: :<%= field_id(attribute.column_name) %>, class: "form-control" %>
+              <% end -%>
+            </div>
+          <% end -%>
+          <div class="box-footer actions">
+            <%%= link_to '戻る', <%= index_helper %>_path, class: 'btn btn-primary' %>
+            <%%= form.submit '更新', class: "btn btn-primary pull-right" %>
+          </div>
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+  </div>
+</section>
+<%% end %>
