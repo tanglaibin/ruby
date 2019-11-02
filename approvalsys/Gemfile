@@ -63,7 +63,7 @@ gem 'settingslogic'
 gem 'webpacker', github: 'rails/webpacker'
 
 # ユーザー管理
-gem 'devise','4.6.2'
+gem 'devise','4.7.1'
 gem 'cancancan','3.0.1'
 # 管理者画面
 #gem 'rails_admin','1.4.2'
